@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" th:href="@{/css/stile.css}"/>
+<meta charset="ISO-8859-1">
+<title>Elenco Studenti</title>
+</head>
+<body>
+	<h1>Universita di Atlantide</h1>
+	<h3>Elenco Studenti</h3>
+	<table>
+		<tr>
+			<th>Matricola</th>
+			<th>Cognome</th>
+			<th>Nome</th>
+			<th>Nato/a il</th>
+			<th>Indirizzo</th>
+			<th>Citta'</th>
+			<th>Email</th>
+			<th>Corso di laurea</th>
+			<th>Indirizzo corso</th>
+			<th>Aggiorna</th>
+			<th>Elimina</th>
+		</tr>
+		<div th:each="studente: ${dummydb.getStudenti()}">	
+   			<tr>
+   				
+	   				<td th:text="${studente.getMatricola()}"></td>
+	   				<td th:text="${studente.getCognome()}"></td>
+	   				<td th:text="${studente.getNome()}"></td>
+	   				<td th:text="${studente.getDataNascita()}"></td>
+	   				<td th:text="${studente.getIndirizzo()}"></td>
+	   				<td th:text="${studente.getCittaResidenza()}"></td>
+	   				<td th:text="${studente.getEmail()}"></td>
+	   				<td th:text="${studente.getCorso().getNome()}"></td>
+	   				<td th:text="${studente.getCorso().getIndirizzo()}"></td>
+	   				<td ><a th:href="@{/showFormAggiornaStudente/{matricola}(matricola=${studente.getMatricola()})}">Aggiorna</a></td>
+	   				<td ><a th:href="@{/eliminaStudente/{matricola}(matricola=${studente.getMatricola()})}" onclick="return confirm('Sei sicuro di volerlo eliminare?')">Elimina</a></td>
+	   			
+   			</tr>
+		</div>
+	</table>
+	<a href="/showFormAggiungiStudente">Aggiungi Studente</a><br>
+	<hr>
+	<a href="/index">Homepage</a><br>
+
+</body>
+</html>

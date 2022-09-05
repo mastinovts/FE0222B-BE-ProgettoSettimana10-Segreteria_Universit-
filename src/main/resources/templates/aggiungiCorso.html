@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" th:href="@{/css/stile.css}"/>
+<meta charset="ISO-8859-1">
+<title>Aggiungi Corso</title>
+</head>
+<body>
+<h1>Universita di Atlantide</h1>
+	<h3>Aggiungi Corso</h3>
+	<form action="#" th:action="@{/aggiungiCorso}" th:object="${corso}" method="POST" >
+		<table>
+			<tr><td>Codice: </td><td><input type="text" th:field="*{codice}" /></td></tr>
+			<tr><td>Nome: </td><td><input type="text" th:field="*{nome}" required="required" /></td></tr>
+			<tr><td>Indirizzo: </td><td><input type="text" th:field="*{indirizzo}" /></td></tr>
+			<tr><td>Numero Esami: </td><td><input type="text" th:field="*{nEsami}" placeholder="10" required="required" /></td></tr>
+		</table>
+		<p><input type="submit" value="registra" /> <input type="reset" value="reset"></p>
+	</form>
+</body>
+</html>

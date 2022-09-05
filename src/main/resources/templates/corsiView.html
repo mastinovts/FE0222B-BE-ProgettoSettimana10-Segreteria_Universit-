@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" th:href="@{/css/stile.css}"/>
+<meta charset="ISO-8859-1">
+<title>Elenco Corsi</title>
+</head>
+<body>
+	<h1>Universita di Atlantide</h1>
+	<h3>Elenco Corsi</h3>
+	
+	<table>
+		<tr>
+			<th>Codice</th>
+			<th>Nome</th>
+			<th>Indirizzo</th>
+			<th>N.Esami</th>
+			<th>Aggiorna</th>
+			<th>Elimina</th>
+		</tr>
+		<div th:each="corso: ${corsi}">	
+   			<tr>
+   				
+	   				<td th:text="${corso.codice}"></td>
+	   				<td th:text="${corso.nome}"></td>
+	   				<td th:text="${corso.indirizzo}"></td>
+	   				<td th:text="${corso.nEsami}"></td>
+	   				<td ><a th:href="@{/showFormAggiornaCorso/{codice}(codice=${corso.codice})}">Aggiorna</a></td>
+	   				<td ><a th:href="@{/eliminaCorso/{codice}(codice=${corso.codice})}" onclick="return confirm('Sei sicuro di volerlo eliminare?')">Elimina</a></td>
+	   			
+   			</tr>
+		</div>
+	</table>
+
+	<a href="/showFormAggiungiCorso">Aggiungi Corso</a><br>
+	<hr>
+	<a href="/index">Homepage</a><br>
+
+</body>
+</html>

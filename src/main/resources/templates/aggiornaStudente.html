@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" th:href="@{/css/stile.css}"/>
+<meta charset="ISO-8859-1">
+<title>Aggiorna Studente</title>
+</head>
+<body>
+	<h1>Universita di Atlantide</h1>
+	<h3>Aggiorna Studente</h3>
+	<form action="#" th:action="@{/aggiornaStudente/{matricola}(matricola=${studente.getMatricola()})}" th:object="${studente}" method="POST" >
+		<table>
+			<tr><td>Matricola: </td><td><input type="text" id="matricola" th:field="*{matricola}" th:disabled="${matricola != null}" /></td></tr>
+			<tr><td>Nome: </td><td><input type="text" th:field="*{nome}" required="required" /></td></tr>
+			<tr><td>Cognome: </td><td><input type="text" th:field="*{cognome}" required="required" /></td></tr>
+			<tr><td>Data di nascita: </td><td><input type="date" pattern="YYYY-MM-DD" th:field="*{dataNascita}" required="required" /></td></tr>
+			<tr><td>Indirizzo: </td><td><input type="text" th:field="*{indirizzo}" required="required" /></td></tr>
+			<tr><td>Citta di residenza: </td><td><input type="text" th:field="*{cittaResidenza}" required="required" /></td></tr>
+			<tr><td>Email: </td><td><input type="email" th:field="*{email}" required="required" /></td></tr>
+			<tr><td>Corso di Laurea: </td>
+				<td> <select th:field="*{corso}">
+						<div th:each="corso: ${corsi}">	
+							<option th:value="${corso.getCodice()}" th:text="${corso.getNome()}" ></option>
+						</div>
+					</select>
+				</td>
+			</tr>
+		</table>
+		<p><input type="submit" value="aggiorna" /> <input type="reset" value="reset"></p>
+	</form>
+
+</body>
+</html>
